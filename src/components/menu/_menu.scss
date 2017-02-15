@@ -1,0 +1,11 @@
+.imgMenu{
+  transition: all 1s;
+  opacity:0.5;
+  cursor: pointer;
+}
+.imgMenu:hover {
+    opacity:1;
+}
+.img-container{
+  max-width: 100%;
+}

@@ -1,7 +1,7 @@
 
 import React from 'react';
-
 import { Navbar, Jumbotron, Button } from 'react-bootstrap';
+
 import LogoImg from './img/elpapa.png';
 
 export default class Header extends React.Component {
