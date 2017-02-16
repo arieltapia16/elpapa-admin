@@ -1,7 +1,7 @@
 import React from 'react';
 import { Navbar, Jumbotron, Button } from 'react-bootstrap';
 import MenuItem from './menu-item';
-// import LogoImg from '../header/img/elpapa.png';
+import SpecialItem from './special-item';
 
 
 export default class Menu extends React.Component {
@@ -18,6 +18,7 @@ export default class Menu extends React.Component {
     });
     return (
       <div>
+        <SpecialItem />
         {itemContainer}
       </div>
     );
