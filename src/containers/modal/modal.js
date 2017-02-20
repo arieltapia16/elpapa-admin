@@ -1,21 +1,16 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import {ModalState} from '../../actions'; // functions called actions
+import {bindActionCreators} from 'redux';
 
 class Modal extends React.Component {
-  constructor (props) {
-    super();
-    this.state = {modal: true};
-    this.onClickClose = this.onClickClose.bind(this);
-  }
-  onClickClose (e) {
-    this.setState({ modal: false });
-  }
+
   render () {
     if (!this.props.item) {
       return <div />;
     }
     return (
-      <div className={this.state.modal ? 'display-modal modal' : '' + 'modal'}>
+      <div className={this.props.modal ? 'display-modal modal' : '' + 'modal'}>
         <div className='modal-dialog' role='document'>
           <div className='modal-content'>
             <div className='modal-header'>
@@ -29,7 +24,7 @@ class Modal extends React.Component {
               <button
                 type='button'
                 className='btn btn-default'
-                onClick={this.onClickClose}
+                onClick={() => { this.props.ModalState(false); }}
                 >Close</button>
               <button type='button' className='btn btn-primary'>Save changes</button>
             </div>
@@ -41,9 +36,16 @@ class Modal extends React.Component {
 }
 
 function mapStateToProps (state) {
+  console.log(state);
   return {
-    item: state.activeSelection
+    item: state.activeSelection,
+    modal: state.modal
   };
 }
+function mapDispatchToProps (dispatch) {
+  // Whenever selectMenuItem is called, the result should be passed
+  // to all of our reducers
+  return bindActionCreators({ModalState}, dispatch);
+}
 
-export default connect(mapStateToProps)(Modal);
+export default connect(mapStateToProps, mapDispatchToProps)(Modal);
