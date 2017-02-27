@@ -10,11 +10,11 @@ class Modal extends React.Component {
       return <div />;
     }
     return (
-      <div className={this.props.modal ? 'display-modal modal' : '' + 'modal'}>
+      <div className={this.props.modal ? 'display-modal modal' : 'modal'}>
         <div className='modal-dialog' role='document'>
           <div className='modal-content'>
             <div className='modal-header'>
-              <button type='button' className='close' data-dismiss='modal' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
+              <button type='button' className='close' onClick={() => { this.props.ModalState(false); }}><span>&times;</span></button>
               <h4 className='modal-title'>Tu selección es:</h4>
             </div>
             <div className='modal-body'>
@@ -26,7 +26,11 @@ class Modal extends React.Component {
                 className='btn btn-default'
                 onClick={() => { this.props.ModalState(false); }}
                 >Close</button>
-              <button type='button' className='btn btn-primary'>Save changes</button>
+              <button
+                type='button'
+                className='btn btn-primary'
+                onClick={() => { this.props.ModalState(false); }}
+                >Save changes</button>
             </div>
           </div>
         </div>
@@ -36,7 +40,6 @@ class Modal extends React.Component {
 }
 
 function mapStateToProps (state) {
-  console.log(state);
   return {
     item: state.activeSelection,
     modal: state.modal

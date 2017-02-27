@@ -41,3 +41,18 @@
 
 .display-modal {
   display: block !important; }
+
+.container-fluid {
+  height: 100vh; }
+
+.container-fluid.login {
+  background-size: cover;
+  background-image: url("img/colitaConPapas.png"); }
+
+.container-fluid .loginForm {
+  margin-top: 200px;
+  margin-right: 50px;
+  padding: 20px;
+  background-color: rgba(200, 0, 0, 0.5);
+  color: white;
+  text-transform: uppercase; }
