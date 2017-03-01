@@ -1,20 +1,5 @@
 @import "components/header/header";
+@import "components/login/login";
+@import "components/admin/admin";
 @import "containers/menu/menu";
 @import "containers/modal/modal";
-
-
-.container-fluid{
-  height: 100vh;
-  &.login{
-    background-size: cover;
-    background-image: url('img/colitaConPapas.png');
-  }
-  .loginForm{
-    margin-top: 200px;
-    margin-right: 50px;
-    padding: 20px;
-    background-color: rgba(200, 0, 0, 0.5);
-    color: white;
-    text-transform: uppercase;
-  }
-}

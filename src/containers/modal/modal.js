@@ -2,8 +2,27 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {ModalState} from '../../actions'; // functions called actions
 import {bindActionCreators} from 'redux';
+import * as firebase from 'firebase';
 
 class Modal extends React.Component {
+  constructor (props) {
+    super();
+    this.daySelection = this.daySelection.bind(this);
+    const userData = JSON.parse(localStorage.user); // eslint-disable-line
+    this.state = {
+      user: userData.user
+    };
+  }
+
+  daySelection () {
+    const obj = firebase.database().ref();
+    obj.update({
+      'daySelection': {
+        user: this.props.item.name
+      }
+    });
+    this.props.ModalState(false);
+  }
 
   render () {
     if (!this.props.item) {
@@ -29,7 +48,7 @@ class Modal extends React.Component {
               <button
                 type='button'
                 className='btn btn-primary'
-                onClick={() => { this.props.ModalState(false); }}
+                onClick={this.daySelection}
                 >Save changes</button>
             </div>
           </div>

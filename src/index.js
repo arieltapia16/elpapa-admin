@@ -2,7 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Router, Route, browserHistory } from 'react-router';
 import App from './App';
-import Login from './Login';
+import Login from './components/login/Login';
+import Admin from './components/admin/admin';
+import AdminDashboard from './components/admin/adminDashboard';
 import './index.css';
 import {Provider} from 'react-redux';// very important to connect all the aplication
 import {createStore} from 'redux'; // create a store to store the reducers (REDUX)
@@ -18,14 +20,28 @@ var config = {
 };
 
 firebase.initializeApp(config);
-
 const store = createStore(rootReducer);
+
+let userData = {logged: false};
+let adminData = {logged: false};
+console.log(userData);
+
+if (localStorage.user) {
+  userData = JSON.parse(localStorage.user); // eslint-disable-line
+}
+if (localStorage.admin) {
+  adminData = JSON.parse(localStorage.admin); // eslint-disable-line
+}
+
 // <Provider> is use to wrap all the components and connect
 ReactDOM.render(
   <Provider store={store} >
     <Router history={browserHistory}>
-      <Route path='/' component={Login} />
-      { localStorage.logged ? <Route path='welcome' component={App} /> : browserHistory.push('/') }
+      <Route path='/' component={Login} >
+        { userData.logged ? <Route path='dashboard' component={App} /> : browserHistory.push('/') }
+      </Route>
+      <Route path='/admin' component={Admin} />
+      <Route path='admin-dashboard' component={AdminDashboard} />
     </Router>
   </Provider>
   ,
