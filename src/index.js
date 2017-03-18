@@ -24,7 +24,7 @@ const store = createStore(rootReducer);
 
 let userData = {logged: false};
 let adminData = {logged: false};
-console.log(userData);
+// console.log(userData);
 
 if (localStorage.user) {
   userData = JSON.parse(localStorage.user); // eslint-disable-line
@@ -38,10 +38,10 @@ ReactDOM.render(
   <Provider store={store} >
     <Router history={browserHistory}>
       <Route path='/' component={Login} >
-        { userData.logged ? <Route path='dashboard' component={App} /> : browserHistory.push('/') }
+        { userData.logged ? <Route path='admin-dashboard' component={App} /> : browserHistory.push('/admin') }
       </Route>
       <Route path='/admin' component={Admin} />
-      <Route path='admin-dashboard' component={AdminDashboard} />
+      <Route path='/admin-dashboard' component={AdminDashboard} />
     </Router>
   </Provider>
   ,
