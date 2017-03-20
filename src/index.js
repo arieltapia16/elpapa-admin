@@ -4,6 +4,7 @@ import { Router, Route, browserHistory } from 'react-router';
 import App from './App';
 import Login from './components/login/Login';
 import Admin from './components/admin/admin';
+import Users from './components/admin/users';
 import AdminDashboard from './components/admin/adminDashboard';
 import './index.css';
 import {Provider} from 'react-redux';// very important to connect all the aplication
@@ -37,11 +38,10 @@ if (localStorage.admin) {
 ReactDOM.render(
   <Provider store={store} >
     <Router history={browserHistory}>
-      <Route path='/' component={Login} >
-        { userData.logged ? <Route path='admin-dashboard' component={App} /> : browserHistory.push('/admin') }
-      </Route>
+      <Route path='/' component={Login} />
       <Route path='/admin' component={Admin} />
       <Route path='/admin-dashboard' component={AdminDashboard} />
+      <Route path='/admin-users' component={Users} />
     </Router>
   </Provider>
   ,

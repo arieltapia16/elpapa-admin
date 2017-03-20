@@ -1,5 +1,4 @@
 .container-fluid{
-  height: 100vh;
   &.login-admin{
     background-size: cover;
     background-image: url('img/pizzaAdmin.jpg');
@@ -11,5 +10,8 @@
     background-color: rgba(0, 0, 250, 0.5);
     color: white;
     text-transform: uppercase;
+  }
+  .new-dinner{
+    padding-left: 60px;;
   }
 }

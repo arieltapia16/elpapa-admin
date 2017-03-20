@@ -25,13 +25,11 @@ export default class AdminDashboard extends Component {
   render () {
     let dinnersArray = [];
     var obj = this.state.dinners;
-     for (const key of Object.keys(obj)) {
-      console.log(key, obj[key]);
-      dinnersArray.push({name: key, option: obj[key]});
+    for (var e in obj) {
+      dinnersArray.push(obj[e]);
     }
-    console.log(dinnersArray);
     const dinners = dinnersArray.map((e, i) =>
-      <tr key={i}><td>{e.name}</td><td>{e.option}</td></tr>
+      <tr key={i}><td>{e.user}</td><td>{e.selection}</td></tr>
     );
     return (
       <div className='container-fluid'>
@@ -40,6 +38,9 @@ export default class AdminDashboard extends Component {
           <div className='col-md-3' />
           <div className='col-md-6'>
             <table className='table table-striped'>
+              <thead>
+                <tr><th>Comensal</th><th>Elección</th></tr>
+              </thead>
               <tbody>
                 {dinners}
               </tbody>

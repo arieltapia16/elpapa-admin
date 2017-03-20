@@ -50,7 +50,7 @@ class App extends Component {
             <label htmlFor='pass'>Password</label>
             <input type='password' className='form-control' value={this.state.pass} onChange={this.changePass} id='pass' placeholder='Contraseña' />
           </div>
-          <button className='btn btn-warning pull-right' onClick={this.submitForm}>Ingresar</button>
+          <button type='button' className='btn btn-warning pull-right' onClick={this.submitForm}>Ingresar</button>
         </div>
       </div>
     );

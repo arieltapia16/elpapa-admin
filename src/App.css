@@ -5,21 +5,32 @@
   background-image: -o-linear-gradient(#550000 0%, #FFAAAA 100%);
   background-image: linear-gradient(#550000 0%, #FFAAAA 100%); }
 
-.navbar.navbar-default img {
+.navbar.navbar-default .navbar-brand {
+  height: 100%; }
+
+.navbar.navbar-default .navbar-brand img {
   float: left; }
 
-.navbar.navbar-default .title {
-  padding-left: 80px;
+.navbar.navbar-default .navbar-brand .title {
+  margin-top: 40px;
   font-size: 40px;
-  float: left;
   color: #f5f5f5;
   font-weight: 700;
-  font-style: italic; }
+  font-style: italic;
+  display: inline-block; }
 
-.container-fluid {
-  height: 100vh; }
+.navbar.navbar-default .navbar-nav.navbar-right {
+  margin-top: 40px; }
+
+.navbar.navbar-default .navbar-nav.navbar-right a, .navbar.navbar-default .navbar-nav.navbar-right a:active {
+  color: #f5f5f5;
+  font-size: 19px; }
+
+.delete a {
+  color: red; }
 
 .container-fluid.login {
+  height: 100vh;
   background-size: cover;
   background-image: url("img/colitaConPapas.png"); }
 
@@ -30,9 +41,6 @@
   background-color: rgba(200, 0, 0, 0.5);
   color: white;
   text-transform: uppercase; }
-
-.container-fluid {
-  height: 100vh; }
 
 .container-fluid.login-admin {
   background-size: cover;
@@ -46,28 +54,5 @@
   color: white;
   text-transform: uppercase; }
 
-.imgMenu {
-  transition: all 1s;
-  opacity: 0.5;
-  cursor: pointer;
-  padding: 10px;
-  margin-top: 0 auto; }
-
-.imgMenu:hover {
-  opacity: 1; }
-
-.img-container {
-  max-width: 100%; }
-
-.specialForm {
-  padding: 20px 0px 40px; }
-
-.specialForm #specialItem {
-  margin-left: 20px; }
-
-.modal {
-  background-color: rgba(0, 0, 0, 0.5);
-  padding-top: 70px; }
-
-.display-modal {
-  display: block !important; }
+.container-fluid .new-dinner {
+  padding-left: 60px; }
