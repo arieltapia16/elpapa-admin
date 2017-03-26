@@ -4,7 +4,7 @@ import 'bootstrap/dist/css/bootstrap-theme.css';
 import Header from '../header/header';
 import * as firebase from 'firebase';
 
-export default class AdminDashboard extends Component {
+export default class Users extends Component {
   constructor (props) {
     super();
     this.dinnerForm = this.dinnerForm.bind(this);
@@ -29,7 +29,6 @@ export default class AdminDashboard extends Component {
   componentWillMount () {
     const rootRef = firebase.database().ref().child('users');
     rootRef.on('value', (snapshot) => {
-      console.log(snapshot.val());
       this.setState({
         users: snapshot.val()
       });
@@ -37,7 +36,6 @@ export default class AdminDashboard extends Component {
   }
 
   dinnerForm () {
-    console.log('push');
     const obj = firebase.database().ref().child('users');
     obj.push({
       'user': this.state.user,

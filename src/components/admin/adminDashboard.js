@@ -28,25 +28,43 @@ export default class AdminDashboard extends Component {
     for (var e in obj) {
       dinnersArray.push(obj[e]);
     }
-    const dinners = dinnersArray.map((e, i) =>
-      <tr key={i}><td>{e.user}</td><td>{e.selection}</td></tr>
+    let menu = 0;
+    let delivery = 0;
+    const dinners = dinnersArray.map((e, i) => {
+      if (e.menu === 1) {
+        menu++;
+      }
+      if (e.delivery) {
+        delivery++;
+      }
+      return <tr key={i}><td>{e.user}</td><td>{e.selection}</td><td>{e.delivery ? 'SI' : 'NO'}</td></tr>;
+      }
     );
     return (
       <div className='container-fluid'>
         <Header />
         <div className='col-md-12'>
-          <div className='col-md-3' />
           <div className='col-md-6'>
             <table className='table table-striped'>
               <thead>
-                <tr><th>Comensal</th><th>Elección</th></tr>
+                <tr><th>Comensal</th><th>Elección</th><th>Para llevar</th></tr>
               </thead>
               <tbody>
                 {dinners}
               </tbody>
             </table>
           </div>
-          <div className='col-md-3' />
+          <div className='col-md-6'>
+            <table className='table table-striped'>
+              <thead>
+                <tr><th>Total de menues</th><th>Comunes</th><th>Lights</th><th>Para llevar</th></tr>
+              </thead>
+              <tbody>
+                <tr><td /><td /><td /></tr>
+                <tr><td>{dinnersArray.length}</td><td>{menu}</td><td>{dinnersArray.length - menu}</td><td>{delivery}</td></tr>
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     );

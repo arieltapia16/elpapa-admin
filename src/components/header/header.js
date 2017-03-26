@@ -1,6 +1,5 @@
 
 import React from 'react';
-import { Navbar } from 'react-bootstrap';
 import {Link} from 'react-router';
 import LogoImg from './img/elpapa.png';
 
@@ -16,7 +15,7 @@ export default class Header extends React.Component {
               <span className='icon-bar' />
               <span className='icon-bar' />
             </button>
-            <a className='navbar-brand' href='#'><img src={LogoImg} width='100px' /><div className='title'>EL PAPA FOREVER</div></a>
+            <Link className='navbar-brand' to='/admin-dashboard'><img src={LogoImg} width='100px' /><div className='title'>EL PAPA FOREVER</div></Link>
           </div>
 
           <div className='collapse navbar-collapse' id='bs-example-navbar-collapse-1'>

@@ -26,15 +26,29 @@ class App extends Component {
     });
   }
   submitForm () {
-    const rootRef = firebase.database().ref().child('users');
+
+    //
+    // const obj = firebase.database().ref().child('admin');
+    // obj.push({
+    //   'user': 'mercedesDreyfus',
+    //   'pass': '123avapass'
+    // });
+
+
+    const rootRef = firebase.database().ref().child('admin');
     rootRef.orderByChild(this.state.user).on('value', (snapshot) => {
-      if (snapshot.child(this.state.user).child('pass').val() === this.state.pass) {
-        const user = {
-          logged: 'true',
-          userName: this.state.user
-        };
-        localStorage.setItem('user', JSON.stringify(user));
-        browserHistory.push('/dashboard');
+      let obj = snapshot.val();
+      for (var e in obj) {
+        if (obj[e].user === this.state.user) {
+          if (obj[e].pass === this.state.pass) {
+            const user = {
+              logged: 'true',
+              userName: this.state.user
+            };
+            localStorage.setItem('admin', JSON.stringify(user));
+            browserHistory.push('/admin-dashboard');
+          }
+        }
       }
     });
   }
