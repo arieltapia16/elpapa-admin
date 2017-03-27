@@ -64,10 +64,7 @@ export default class Menu extends Component {
         }
       });
     }
-    this.setState({
-      regular: '',
-      light: ''
-    });
+    
   }
 
   render () {
