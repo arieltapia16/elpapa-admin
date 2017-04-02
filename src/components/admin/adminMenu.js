@@ -10,11 +10,15 @@ export default class Menu extends Component {
     this.menuForm = this.menuForm.bind(this);
     this.changeRegularMenu = this.changeRegularMenu.bind(this);
     this.changeLightMenu = this.changeLightMenu.bind(this);
+    this.changeImgItem = this.changeImgItem.bind(this);
+    this.changeImgItemLight = this.changeImgItemLight.bind(this);
     this.selectChange = this.selectChange.bind(this);
     this.state = {
       days: [],
       regular: '',
       light: '',
+      imgItem: '',
+      imgItemLight: '',
       select: ''
     };
   }
@@ -28,11 +32,23 @@ export default class Menu extends Component {
       light: event.target.value
     });
   }
+  changeImgItem (event) {
+    this.setState({
+      imgItem: event.target.value
+    });
+  }
+  changeImgItemLight (event) {
+    this.setState({
+      imgItemLight: event.target.value
+    });
+  }
   selectChange (event) {
     this.setState({
       select: event.target.value,
-      regular: this.state.days[event.target.value] ? this.state.days[event.target.value].items[0].name : 'no',
-      light: this.state.days[event.target.value] ? this.state.days[event.target.value].items[1].name : 'no'
+      regular: this.state.days[event.target.value] ? this.state.days[event.target.value].items[0].name : '',
+      light: this.state.days[event.target.value] ? this.state.days[event.target.value].items[1].name : '',
+      imgItem: this.state.days[event.target.value] ? this.state.days[event.target.value].items[0].img : '',
+      imgItemLight: this.state.days[event.target.value] ? this.state.days[event.target.value].items[1].img : ''
     });
 
     // this.state.days[this.state.select] ? this.state.days[this.state.select].items[0].name : 'no',
@@ -53,12 +69,12 @@ export default class Menu extends Component {
       obj.child(this.state.select).child('items')
       .update({
         0: {
-          img: '',
+          img: this.state.imgItem,
           menu: '1',
           name: this.state.regular
         },
         1: {
-          img: '',
+          img: this.state.imgItemLight,
           menu: '2',
           name: this.state.light
         }
@@ -66,7 +82,9 @@ export default class Menu extends Component {
     }
     this.setState({
       regular: '',
-      light: ''
+      light: '',
+      imgItem: '',
+      imgItemLight: ''
     });
   }
 
@@ -104,7 +122,7 @@ export default class Menu extends Component {
             <h3>Menues</h3>
             <table className='table table-striped'>
               <thead>
-                <tr><th>Dia</th><th>Menu comun</th><th /></tr>
+                <tr><th>Dia</th><th>Menu comun</th><th>Menu Light</th><th /></tr>
               </thead>
               <tbody>
                 {menues}
@@ -124,8 +142,17 @@ export default class Menu extends Component {
               <input type='text' className='form-control' value={this.state.regular} onChange={this.changeRegularMenu} id='regular' placeholder='Comun' />
             </div>
             <div className='form-group'>
+              <label htmlFor='imgItem'>Imagen Común</label>
+              <input type='text' className='form-control' value={this.state.imgItem} onChange={this.changeImgItem} id='imgItem' placeholder='Img' />
+            </div>
+            <div className='form-group'>
               <label htmlFor='light'>Menu Light</label>
               <input type='text' className='form-control' value={this.state.light} onChange={this.changeLightMenu} id='light' placeholder='Light' />
+            </div>
+            <div className='form-group'>
+              <label htmlFor='imgItemLight'>ImagenLight</label>
+              <input type='text' className='form-control' value={this.state.imgItemLight} onChange={this.changeImgItemLight} id='imgI
+              temLight' placeholder='Img' />
             </div>
             <button type='button' className='btn btn-warning pull-right' onClick={this.menuForm}>Ingresar</button>
           </div>

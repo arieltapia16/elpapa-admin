@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/css/bootstrap-theme.css';
-import {browserHistory} from 'react-router';
+// import {browserHistory} from 'react-router';
 import Header from '../header/header';
 import * as firebase from 'firebase';
-
+import menuOrder from './menu-order';
 
 export default class AdminDashboard extends Component {
   constructor (props) {
@@ -14,6 +14,7 @@ export default class AdminDashboard extends Component {
     };
   }
   componentWillMount () {
+    menuOrder();
     const rootRef = firebase.database().ref().child('daySelection').child('dinners');
     rootRef.on('value', (snapshot) => {
       this.setState({
@@ -38,7 +39,7 @@ export default class AdminDashboard extends Component {
         delivery++;
       }
       return <tr key={i}><td>{e.user}</td><td>{e.selection}</td><td>{e.delivery ? 'SI' : 'NO'}</td></tr>;
-      }
+    }
     );
     return (
       <div className='container-fluid'>

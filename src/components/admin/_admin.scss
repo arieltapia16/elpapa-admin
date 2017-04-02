@@ -1,5 +1,5 @@
-.container-fluid{
-  &.login-admin{
+.container-fluid {
+  &.login-admin {
     background-size: cover;
     background-image: url('img/pizzaAdmin.jpg');
   }
@@ -15,6 +15,6 @@
     padding-left: 60px;;
   }
   .menu-edit{
-    margin-top: 20px; 
+    margin-top: 20px;
   }
 }
