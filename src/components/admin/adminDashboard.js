@@ -32,7 +32,8 @@ export default class AdminDashboard extends Component {
     let menu = 0;
     let delivery = 0;
     const dinners = dinnersArray.map((e, i) => {
-      if (e.menu === 1) {
+      console.log(e);
+      if (e.menu === "1") {
         menu++;
       }
       if (e.delivery) {
