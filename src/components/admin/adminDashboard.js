@@ -32,8 +32,7 @@ export default class AdminDashboard extends Component {
     let menu = 0;
     let delivery = 0;
     const dinners = dinnersArray.map((e, i) => {
-      console.log(e);
-      if (e.menu === "1") {
+      if (e.menu === '1') {
         menu++;
       }
       if (e.delivery) {
@@ -62,7 +61,6 @@ export default class AdminDashboard extends Component {
                 <tr><th>Total de menues</th><th>Comunes</th><th>Lights</th><th>Para llevar</th></tr>
               </thead>
               <tbody>
-                <tr><td /><td /><td /></tr>
                 <tr><td>{dinnersArray.length}</td><td>{menu}</td><td>{dinnersArray.length - menu}</td><td>{delivery}</td></tr>
               </tbody>
             </table>
