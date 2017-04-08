@@ -38,7 +38,7 @@ export default class AdminDashboard extends Component {
       if (e.delivery) {
         delivery++;
       }
-      return <tr key={i}><td>{e.user}</td><td>{e.selection}</td><td>{e.delivery ? 'SI' : 'NO'}</td></tr>;
+      return <tr key={i}><td>{e.showName}</td><td>{e.selection}</td><td>{e.delivery ? 'SI' : 'NO'}</td></tr>;
     }
     );
     return (
